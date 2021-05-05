@@ -21,17 +21,20 @@ public enum Type {
         String s = "";
         switch(this){
             case BOX:
-                s = "C";   
+                s = "C";
+                break;
             case EMPTY:
-                s = "."; 
+                s = ".";
+                break;
             case PLAYER:
                 s = "P";
+                break;
             case TARGET:
                 s = "x";
+                break;
             case WALL:
                 s = "#";
-            default:
-                s =".";
+                break;
         }
         return s;
     }
