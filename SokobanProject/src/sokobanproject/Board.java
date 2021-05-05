@@ -30,7 +30,7 @@ public class Board {
      * @param length the length to determinate how many wall it will add
      */
     public void addHorizontalWall(int posCol, int posRow, int length){
-        for (int i = 0; i <= length; i++) {
+        for (int i = 0; i < length; i++) {
             this.listPositions[posCol][posRow+i].type = Type.WALL;
         }
     }
@@ -42,7 +42,7 @@ public class Board {
      * @param length the length to determinate how many wall it will add
      */
     public void addVerticalWall(int posCol, int posRow, int length){
-        for (int i = 0; i <= length; i++) {
+        for (int i = 0; i < length; i++) {
             this.listPositions[posCol+i][posRow].type = Type.WALL;
         }
     }
