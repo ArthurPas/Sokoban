@@ -12,11 +12,12 @@ public class Player {
     public static void main(String[] args) {
         Board b = new Board("a",10,10);
         b.fillBoard();
-        b.addVerticalWall(0, 0, 5);
-        b.addHorizontalWall(0, 0, 5);
+        b.addBox(0, 0);
         b.setPosition(6, 6);
         String a = b.displayBoard();
         System.out.println(a);
+        b.listPositions[6][6].replaceByPlayer(new Position(0,1), b);
+        System.out.println(b.displayBoard());
     }
     
 }

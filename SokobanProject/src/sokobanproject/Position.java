@@ -25,11 +25,27 @@ public class Position {
      * @return
      */
     public Position emptyPosition() {
-        Position vide = new Position(this.col, this.row);
-        vide.type=Type.EMPTY;
-        return vide;
+        Position empty = new Position(this.col, this.row);
+        empty.type=Type.EMPTY;
+        return empty;
     }
     
+    /**
+     * Replace a new position by a player if the old position was a player
+     * @param destination the destination of the player
+     * @param b the board
+     */
+    public void replaceByPlayer(Position destination, Board b){
+        if(b.listPositions[this.col][this.row].type==Type.PLAYER){
+            Position oldPos = b.listPositions[this.col][this.row] ;
+            b.listPositions[destination.col][destination.row].type=oldPos.type;
+            oldPos.type= Type.EMPTY;
+        }
+        else{
+            //TODO exception 
+        }
+                                                                                
+    }
     /**
      * Method that compare two position to determinate if they are the same
      * @param otherPos the other position to compare
