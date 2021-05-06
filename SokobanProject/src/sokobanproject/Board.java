@@ -31,10 +31,11 @@ public class Board {
      */
     public void addHorizontalWall(int posCol, int posRow, int length){
         for (int i = 0; i < length; i++) {
-            this.listPositions[posCol][posRow+i].type = Type.WALL;
+            if(posCol+i < this.nbCol){
+                this.listPositions[posCol+i][posRow].type = Type.WALL;
+            }
         }
     }
-    
     /**
      * Add some vertical wall on the board
      * @param posCol the position of the column
@@ -43,7 +44,9 @@ public class Board {
      */
     public void addVerticalWall(int posCol, int posRow, int length){
         for (int i = 0; i < length; i++) {
-            this.listPositions[posCol+i][posRow].type = Type.WALL;
+            if(posRow+i < this.nbRow){
+                this.listPositions[posCol][posRow+i].type = Type.WALL;
+            }
         }
     }
     
