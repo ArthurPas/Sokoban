@@ -23,8 +23,28 @@ public class Player {
         b.setPosition(3,4);
         String a = b.displayBoard();
         System.out.println(a);
-        b.listPositions[0][0].replaceByPlayer(new Position(0,1), b);
-        System.out.println(b.displayBoard());
+        String s = "LLL";
+        movePlayer(s, b);
     }
-    
+    public static void movePlayer(String s, Board b){
+        Position nextPosition = new Position(0,0);
+        for (int i = 0; i < s.length(); i++) {
+            Position playerPos = b.getPlayerPos();
+            switch (s.charAt(i)) {
+                case 'L':
+                    nextPosition = new Position(playerPos.col-1, playerPos.row);
+                    playerPos.replaceByPlayer(nextPosition, b);
+                case 'R':
+                    nextPosition = new Position(playerPos.col+1, playerPos.row);
+                    playerPos.replaceByPlayer(nextPosition, b);
+                case 'U':
+                    nextPosition = new Position(playerPos.col, playerPos.row-1);
+                    playerPos.replaceByPlayer(nextPosition, b);
+                case 'D':
+                    nextPosition = new Position(playerPos.col, playerPos.row+1);
+                    playerPos.replaceByPlayer(nextPosition, b);
+            }
+            System.out.println(b.displayBoard());
+        }
+    }
 }

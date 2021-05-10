@@ -22,7 +22,21 @@ public class Board {
         this.nbRow = nbrow;
         this.listPositions = new Position[this.nbCol][this.nbRow];
     }
-    
+
+    /**
+     * Get the Position of the player
+     * @return the Position of the player
+     */
+    public Position getPlayerPos(){
+        for (int col = 0; col < this.nbCol; col++) {
+            for (int row = 0; row < this.nbRow; row++) {
+                if(this.listPositions[col][row].type == Type.PLAYER){
+                    return new Position(col,row);
+                }
+            }
+        }
+        return null;
+    }
     /**
      * Add some horizontal wall on the board
      * @param posCol the position of the column
@@ -96,23 +110,23 @@ public class Board {
      */
     public String displayEmptyBoard(){
         StringBuilder builder = new StringBuilder("").append(System.lineSeparator());
-        for (int lig=-1; lig< this.nbRow ;lig++){
+        for (int row=-1; row< this.nbRow ;row++){
 
-            if(lig!=-1 && lig<10){
-                builder.append(lig);
+            if(row!=-1 && row<10){
+                builder.append(row);
             }
-            else if(lig>-1){
-                builder.append(lig);
+            else if(row>-1){
+                builder.append(row);
             }
             for (int col=-1; col<this.nbCol ;col++){
                 if(col==-1){
                     builder.append(" ");
                 }
-                if(lig==-1 && col>-1){
+                if(row==-1 && col>-1){
                     builder.append("  ");
                     builder.append(col);
                 }
-                if(lig>-1 && col>-1){
+                if(row>-1 && col>-1){
                     builder.append(" . ");
                 }
             }

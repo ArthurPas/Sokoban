@@ -1,4 +1,3 @@
-
 package sokobanproject;
 
 /**
@@ -46,6 +45,7 @@ public class Position {
         }
                                                                                 
     }
+    
     /**
      * Method that compare two position to determinate if they are the same
      * @param otherPos the other position to compare
@@ -56,4 +56,6 @@ public class Position {
         Position Compare = (Position) otherPos;
         return this.col == Compare.col && this.row == Compare.row;
     }
+    
+    
 }

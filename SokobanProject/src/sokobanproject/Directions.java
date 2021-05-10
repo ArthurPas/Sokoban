@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package sokobanproject;
 
 /**
@@ -10,16 +5,15 @@ package sokobanproject;
  * @author apascal002
  */
 public enum Directions {
-    R, // Right
-    L, // left
-    U, // Up
-    D;// Down
+    R,  // Right
+    L,  // left
+    U,  // Up
+    D;  // Down
 
     /**
      * Gives the number of position after an horizontal movement
      * @return the number of position after the movement
-     */
-    
+     
     public int horizontalMovement(){
         int mvt=0;
         switch(this){
@@ -39,8 +33,7 @@ public enum Directions {
     /**
      * Gives the number of position after a vertical movement
      * @return the number of position after the movement
-     */
-    
+     
     public int verticalMovement(){
         int mvt=0;
         switch(this){
@@ -57,4 +50,6 @@ public enum Directions {
         }
         return mvt;
     }
+    */
+    
 }
