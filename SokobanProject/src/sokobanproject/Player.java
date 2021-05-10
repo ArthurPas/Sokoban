@@ -38,18 +38,27 @@ public class Player {
             Position playerPos = b.getPlayerPos();
             switch (s.charAt(i)) {
                 case 'L':
-                    nextPosition = new Position(playerPos.col-1, playerPos.row);
+                    nextPosition = b.listPositions[playerPos.col-1][playerPos.row];
+                    if(nextPosition.type != Type.WALL){
                     playerPos.replaceByPlayer(nextPosition, b);
+                    }
                 case 'R':
-                    nextPosition = new Position(playerPos.col+1, playerPos.row);
+                    nextPosition = b.listPositions[playerPos.col+1][playerPos.row];
+                    if(nextPosition.type != Type.WALL){
                     playerPos.replaceByPlayer(nextPosition, b);
+                    }
                 case 'U':
-                    nextPosition = new Position(playerPos.col, playerPos.row-1);
+                    nextPosition = b.listPositions[playerPos.col][playerPos.row-1];
+                    if(nextPosition.type != Type.WALL){
                     playerPos.replaceByPlayer(nextPosition, b);
+                    }
                 case 'D':
-                    nextPosition = new Position(playerPos.col, playerPos.row+1);
+                    nextPosition = b.listPositions[playerPos.col][playerPos.row+1];
+                    if(nextPosition.type != Type.WALL){
                     playerPos.replaceByPlayer(nextPosition, b);
+                    }
             }
+            System.out.println(b.displayBoard());
         }
     }
 }
