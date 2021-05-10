@@ -26,6 +26,12 @@ public class Player {
         String s = "LLL";
         movePlayer(s, b);
     }
+
+    /**
+     * Move the player following a String given 
+     * @param s the string given
+     * @param b the board
+     */
     public static void movePlayer(String s, Board b){
         Position nextPosition = new Position(0,0);
         for (int i = 0; i < s.length(); i++) {
@@ -44,7 +50,6 @@ public class Player {
                     nextPosition = new Position(playerPos.col, playerPos.row+1);
                     playerPos.replaceByPlayer(nextPosition, b);
             }
-            System.out.println(b.displayBoard());
         }
     }
 }
