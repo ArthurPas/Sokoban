@@ -1,5 +1,8 @@
 package sokobanproject;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author apascal002
@@ -39,6 +42,23 @@ public class Position {
             Position oldPos = b.listPositions[this.col][this.row] ;
             b.listPositions[destination.col][destination.row].type=oldPos.type;
             oldPos.type= Type.EMPTY;
+        }
+        else{
+            //TODO exception 
+        }
+                                                                                
+    }
+    
+    /**
+     * Replace a new position by a box if the old position was a box
+     * @param destination the destination of the box
+     * @param b the board
+     */
+    public void replaceByBox(Position destination, Board b){
+        if(b.listPositions[this.col][this.row].type==Type.BOX){
+            Position oldPos = b.listPositions[this.col][this.row] ;
+            b.listPositions[destination.col][destination.row].type=oldPos.type;
+            oldPos.type= Type.PLAYER;
         }
         else{
             //TODO exception 

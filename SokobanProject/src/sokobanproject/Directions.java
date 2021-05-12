@@ -8,15 +8,21 @@ public enum Directions {
     R,  // Right
     L,  // left
     U,  // Up
-    D;  // Down
+    D;  // Down// Down
 
+    
+    public static Directions[] all() {
+        Directions[] directions
+                = {U, R, L, D};
+        return directions;
+    }
     /**
      * Gives the number of position after an horizontal movement
      * @return the number of position after the movement
-     
-    public int horizontalMovement(){
+     **/
+    public static int horizontalMovement(Directions d){
         int mvt=0;
-        switch(this){
+        switch(d){
             case R:
                 mvt=1;
                 break;
@@ -33,10 +39,10 @@ public enum Directions {
     /**
      * Gives the number of position after a vertical movement
      * @return the number of position after the movement
-     
-    public int verticalMovement(){
+    **/ 
+    public static int verticalMovement(Directions d){
         int mvt=0;
-        switch(this){
+        switch(d){
             case D:
                 mvt=1;
                 break;
@@ -50,6 +56,5 @@ public enum Directions {
         }
         return mvt;
     }
-    */
     
 }

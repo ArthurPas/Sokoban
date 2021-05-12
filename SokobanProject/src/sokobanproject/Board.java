@@ -37,6 +37,20 @@ public class Board {
         }
         return null;
     }
+        /**
+     * Get the Position of the box
+     * @return the Position of the player
+     */
+    public Position getBoxPos(){
+        for (int col = 0; col < this.nbCol; col++) {
+            for (int row = 0; row < this.nbRow; row++) {
+                if(this.listPositions[col][row].type == Type.BOX){
+                    return new Position(col,row);
+                }
+            }
+        }
+        return null;
+    }
     /**
      * Add some horizontal wall on the board
      * @param posCol the position of the column
@@ -165,5 +179,8 @@ public class Board {
             builder.append(System.lineSeparator());
         }
         return builder.toString();
+    }
+    public boolean isOnBoard(Position p){
+       return p.col <= this.nbCol && p.row <= this.nbRow && p.col >= 0 && p.row>= 0;
     }
 }

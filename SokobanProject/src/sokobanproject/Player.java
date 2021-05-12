@@ -23,7 +23,7 @@ public class Player {
         b.setPosition(3,4);
         String a = b.displayBoard();
         System.out.println(a);
-        String s = "LLL";
+        String s = "LULURU";
         movePlayer(s, b);
     }
 
@@ -40,23 +40,47 @@ public class Player {
                 case 'L':
                     nextPosition = b.listPositions[playerPos.col-1][playerPos.row];
                     if(nextPosition.type != Type.WALL){
+                    
+                        if(nextPosition.type == Type.BOX){
+                            nextPosition.replaceByBox(b.listPositions[nextPosition.col-1][nextPosition.row], b);
+                            playerPos.replaceByPlayer(nextPosition, b);
+                        }
                     playerPos.replaceByPlayer(nextPosition, b);
                     }
+                    break;
                 case 'R':
                     nextPosition = b.listPositions[playerPos.col+1][playerPos.row];
                     if(nextPosition.type != Type.WALL){
+                        if(nextPosition.type == Type.BOX){
+                            nextPosition.replaceByBox(b.listPositions[nextPosition.col+1][nextPosition.row], b);
+                            playerPos.replaceByPlayer(nextPosition, b);
+                        }
                     playerPos.replaceByPlayer(nextPosition, b);
                     }
+                    
+                    break;
                 case 'U':
                     nextPosition = b.listPositions[playerPos.col][playerPos.row-1];
                     if(nextPosition.type != Type.WALL){
-                    playerPos.replaceByPlayer(nextPosition, b);
+                    
+                        if(nextPosition.type == Type.BOX){
+                            nextPosition.replaceByBox(b.listPositions[nextPosition.col][nextPosition.row-1], b);
+                            playerPos.replaceByPlayer(nextPosition, b);
+                        }
+                        playerPos.replaceByPlayer(nextPosition, b);
                     }
+                    
+                    break;
                 case 'D':
                     nextPosition = b.listPositions[playerPos.col][playerPos.row+1];
                     if(nextPosition.type != Type.WALL){
+                        if(nextPosition.type == Type.BOX){
+                            nextPosition.replaceByBox(b.listPositions[nextPosition.col][nextPosition.row+1], b);
+                            playerPos.replaceByPlayer(nextPosition, b);
+                        }
                     playerPos.replaceByPlayer(nextPosition, b);
                     }
+                    break;
             }
             System.out.println(b.displayBoard());
         }
