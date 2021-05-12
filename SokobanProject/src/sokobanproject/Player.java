@@ -51,7 +51,7 @@ public class Player {
                 case 'R':
                     nextPosition = b.listPositions[playerPos.col+1][playerPos.row];
                     if(nextPosition.type != Type.WALL){
-                        if(nextPosition.type == Type.BOX){
+                        if(nextPosition.type == Type.BOX ){
                             nextPosition.replaceByBox(b.listPositions[nextPosition.col+1][nextPosition.row], b);
                             playerPos.replaceByPlayer(nextPosition, b);
                         }
