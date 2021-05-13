@@ -1,6 +1,7 @@
 package sokobanproject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -41,7 +42,7 @@ public class Position {
         if(b.listPositions[this.col][this.row].type==Type.PLAYER){
             Position oldPos = b.listPositions[this.col][this.row] ;
             b.listPositions[destination.col][destination.row].type=oldPos.type;
-            oldPos.type= Type.EMPTY;
+            oldPos.type= b.saved.get(oldPos);
         }
         else{
             //TODO exception 
@@ -58,7 +59,7 @@ public class Position {
         if(b.listPositions[this.col][this.row].type==Type.BOX){
             Position oldPos = b.listPositions[this.col][this.row] ;
             b.listPositions[destination.col][destination.row].type=oldPos.type;
-            oldPos.type= Type.PLAYER;
+            oldPos.type= b.saved.get(oldPos);
         }
         else{
             //TODO exception 

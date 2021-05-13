@@ -1,5 +1,7 @@
 package sokobanproject;
-
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 /**
  *
  * @author apascal002
@@ -9,7 +11,7 @@ public class Board {
     int nbCol;
     int nbRow;
     public Position[][] listPositions;
-    
+    HashMap<Position, Type> saved = this.savedInitialType();
     /**
      * Construtor of the Board
      * @param boardName the name of the board
@@ -21,6 +23,7 @@ public class Board {
         this.nbCol = nbCol;
         this.nbRow = nbrow;
         this.listPositions = new Position[this.nbCol][this.nbRow];
+        this.saved = new HashMap<>();
     }
 
     /**
@@ -41,15 +44,27 @@ public class Board {
      * Get the Position of the box
      * @return the Position of the player
      */
-    public Position getBoxPos(){
+    public ArrayList<Position> getBoxPos(){
+        ArrayList<Position> BoxesPos= new ArrayList<>();
         for (int col = 0; col < this.nbCol; col++) {
             for (int row = 0; row < this.nbRow; row++) {
                 if(this.listPositions[col][row].type == Type.BOX){
-                    return new Position(col,row);
+                    BoxesPos.add(this.listPositions[col][row]);
                 }
             }
         }
-        return null;
+        return BoxesPos;
+    }
+    public ArrayList<Position> getTargetsPos(){
+        ArrayList<Position> BoxesPos= new ArrayList<>();
+        for (int col = 0; col < this.nbCol; col++) {
+            for (int row = 0; row < this.nbRow; row++) {
+                if(this.listPositions[col][row].type == Type.TARGET){
+                    BoxesPos.add(this.listPositions[col][row]);
+                }
+            }
+        }
+        return BoxesPos;
     }
     /**
      * Add some horizontal wall on the board
@@ -114,10 +129,25 @@ public class Board {
                 Position p = new Position(col,row);
                 this.listPositions[col][row] = p.emptyPosition();;
             }
-            
         }
     }
-    
+    public HashMap<Position, Type> savedInitialType(){
+        for (int col = 0; col < this.nbCol; col++) {
+            for (int row = 0; row < this.nbRow; row++) {
+                if(this.listPositions[col][row].type != Type.PLAYER && this.listPositions[col][row].type != Type.BOX ){
+                    saved.put(this.listPositions[col][row], this.listPositions[col][row].type);
+                }
+                else if (this.listPositions[col][row].type == Type.BOX){
+                    saved.put(this.listPositions[col][row],Type.EMPTY);
+                }
+                else if(this.listPositions[col][row].type == Type.PLAYER ){
+                    saved.put(this.listPositions[col][row],Type.EMPTY);
+                }
+                
+            }
+        }
+        return saved;
+    } 
     /**
      * String that represent an empty board
      * @return the string that represent an empty board
@@ -180,6 +210,17 @@ public class Board {
         }
         return builder.toString();
     }
+    public boolean checkWin(){
+        boolean bool = true;
+        ArrayList<Position> boxesPos= getBoxPos();
+        ArrayList<Position> targetsPos= getTargetsPos();
+        return boxesPos.containsAll(targetsPos);
+    }
+    /**
+     * Check if the position is on the board
+     * @param p the position 
+     * @return true if the position is on the board
+     */
     public boolean isOnBoard(Position p){
        return p.col <= this.nbCol && p.row <= this.nbRow && p.col >= 0 && p.row>= 0;
     }
