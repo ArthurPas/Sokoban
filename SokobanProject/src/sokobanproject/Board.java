@@ -11,7 +11,7 @@ public class Board {
     int nbCol;
     int nbRow;
     public Position[][] listPositions;
-    HashMap<Position, Type> saved = this.savedInitialType();
+    HashMap<Position, Type> saved;
     /**
      * Construtor of the Board
      * @param boardName the name of the board

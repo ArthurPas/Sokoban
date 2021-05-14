@@ -1,5 +1,7 @@
 package sokobanproject;
 
+import java.io.FileNotFoundException;
+
 /**
  *
  * @author apascal002
@@ -9,9 +11,13 @@ public class Player {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        Board b = new Board("a", 5, 6);
-        b.fillBoard();
+    public static void main(String[] args) throws FileNotFoundException {
+        
+        Builder build = new Builder();
+        build.readFile("Board1.txt");
+        Board b = build.build("Board1.txt");
+        //Board b = new Board("a", 5, 6);
+        /*
         b.addHorizontalWall(0, 5, 6);
         b.addHorizontalWall(0, 0, 6);
         b.addVerticalWall(0, 0, 5);
@@ -21,12 +27,15 @@ public class Player {
         b.addTarget(3, 1);
         b.addTarget(3, 2);
         b.setPosition(3, 4);
+        */
         b.savedInitialType();
-        String a = b.displayBoard();
-        System.out.println(a);
+        
+        System.out.println(b.displayBoard());
+        System.out.println(b.boardName);
         String s = "LULURLUR";
         movePlayer(s, b);
         System.out.println(b.checkWin());
+        
     }
 
     /**
@@ -36,7 +45,7 @@ public class Player {
      * @param b the board
      */
     public static void movePlayer(String s, Board b) {
-        Position nextPosition = new Position(0, 0);
+        Position nextPosition;
         for (int i = 0; i < s.length(); i++) {
             Position playerPos = b.getPlayerPos();
             switch (s.charAt(i)) {
