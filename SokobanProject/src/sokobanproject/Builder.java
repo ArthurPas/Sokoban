@@ -14,8 +14,14 @@ import java.util.Scanner;
  *
  * @author arthur
  */
-public class Builder {
+public class Builder implements BoardBuilder {
 
+    /**
+     *
+     * @param path
+     * @return
+     * @throws FileNotFoundException
+     */
     public ArrayList<String> readFile(String path) throws FileNotFoundException {
         ArrayList<String> row = new ArrayList<>();
         try {
@@ -56,6 +62,13 @@ public class Builder {
         return theType;
     }
 
+    /**
+     *
+     * @param path
+     * @return
+     * @throws FileNotFoundException
+     */
+    @Override
     public Board build(String path) throws FileNotFoundException {
         ArrayList<String> stringRow = readFile(path);
         String boardName = stringRow.get(0);

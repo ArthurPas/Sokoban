@@ -14,7 +14,6 @@ public class Player {
     public static void main(String[] args) throws FileNotFoundException {
         
         Builder build = new Builder();
-        build.readFile("Board1.txt");
         Board b = build.build("Board1.txt");
         //Board b = new Board("a", 5, 6);
         /*

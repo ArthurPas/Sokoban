@@ -5,10 +5,12 @@
  */
 package sokobanproject;
 
+import java.io.FileNotFoundException;
+
 /**
  *
  * @author arthur
  */
 public interface BoardBuilder {
-    Board build();   
+    Board build(String path)throws FileNotFoundException ;   
 }
