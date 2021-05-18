@@ -1,6 +1,7 @@
 package sokobanproject;
 
 import java.io.FileNotFoundException;
+import java.sql.SQLException;
 
 /**
  *
@@ -11,10 +12,12 @@ public class Player {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) throws FileNotFoundException, SQLException {
         
         Builder build = new Builder();
         Board b = build.build("Board1.txt");
+        Database base = new Database("jdbc:sqlite:boards.db");
+        base.initializeDriver();
         //Board b = new Board("a", 5, 6);
         /*
         b.addHorizontalWall(0, 5, 6);
@@ -28,9 +31,8 @@ public class Player {
         b.setPosition(3, 4);
         */
         b.savedInitialType();
-        
-        System.out.println(b.displayBoard());
         System.out.println(b.boardName);
+        System.out.println(b.displayBoard());
         String s = "LULURLUR";
         movePlayer(s, b);
         System.out.println(b.checkWin());

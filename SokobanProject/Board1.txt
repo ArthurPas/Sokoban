@@ -1,4 +1,4 @@
-test Plateau
+Plateau
 #####
 #.Cx#
 #..x#
