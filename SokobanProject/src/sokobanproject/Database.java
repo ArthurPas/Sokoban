@@ -31,7 +31,7 @@ public class Database {
      * Initialize the database files and the driver
      * @throws SQLException
      */
-    public void initializeDriver() throws SQLException {
+    public void initializeDriverAndDb() throws SQLException {
         try {
             Class.forName(sqlite_driver);
         } catch (ClassNotFoundException ex) {

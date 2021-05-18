@@ -17,7 +17,7 @@ public class Player {
         Builder build = new Builder();
         Board b = build.build("Board1.txt");
         Database base = new Database("jdbc:sqlite:boards.db");
-        base.initializeDriver();
+        base.initializeDriverAndDb();
         //Board b = new Board("a", 5, 6);
         /*
         b.addHorizontalWall(0, 5, 6);
