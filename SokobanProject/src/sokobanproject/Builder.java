@@ -65,12 +65,12 @@ public class Builder implements BoardBuilder {
     /**
      *
      * @param path
+     * @param stringRow
      * @return
      * @throws FileNotFoundException
      */
     @Override
-    public Board build(String path) throws FileNotFoundException {
-        ArrayList<String> stringRow = readFile(path);
+    public Board build(ArrayList<String> stringRow) throws FileNotFoundException {
         String boardName = stringRow.get(0);
         int nbCol = stringRow.get(1).length();
         int nbRow = stringRow.size() - 1;

@@ -15,9 +15,14 @@ public class Player {
     public static void main(String[] args) throws FileNotFoundException, SQLException {
         
         Builder build = new Builder();
-        Board b = build.build("Board1.txt");
         Database base = new Database("jdbc:sqlite:boards.db");
+        Board b = base.get(build, "jdbc:sqlite:boards.db", "Plateau");
         base.initializeDriverAndDb();
+        //base.addBoard(build, "Board1.txt", "jdbc:sqlite:boards.db");
+        //base.deleteBoardFromDB(build, "jdbc:sqlite:boards.db", "Plateau");
+        //base.addBoard(build, "board1", "Board1.txt", "jdbc:sqlite:boards.db");
+        
+        base.consultDb(build, "jdbc:sqlite:boards.db");
         //Board b = new Board("a", 5, 6);
         /*
         b.addHorizontalWall(0, 5, 6);

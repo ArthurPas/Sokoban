@@ -6,11 +6,12 @@
 package sokobanproject;
 
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 
 /**
  *
  * @author arthur
  */
 public interface BoardBuilder {
-    Board build(String path)throws FileNotFoundException ;   
+    Board build(ArrayList<String> stringRow)throws FileNotFoundException ;   
 }
