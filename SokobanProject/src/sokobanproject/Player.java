@@ -16,7 +16,7 @@ public class Player {
         
         Builder build = new Builder();
         Database base = new Database("jdbc:sqlite:boards.db");
-        Board b = base.get(build, "jdbc:sqlite:boards.db", "Plateau");
+        Board b = base.get(build, "jdbc:sqlite:boards.db", "Plateau 2");
         base.initializeDriverAndDb();
         //base.addBoard(build, "Board1.txt", "jdbc:sqlite:boards.db");
         //base.deleteBoardFromDB(build, "jdbc:sqlite:boards.db", "Plateau");
