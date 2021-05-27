@@ -3,8 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package sokobanproject;
+package sokobanproject.databaseAndFiles;
 
+import sokobanproject.boards.Type;
+import sokobanproject.boards.Board;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -17,9 +19,9 @@ import java.util.Scanner;
 public class Builder implements BoardBuilder {
 
     /**
-     *
-     * @param path
-     * @return
+     * Allow the user to read the files given
+     * @param path the path of the file
+     * @return an arrayList of string that contains all the line of the files
      * @throws FileNotFoundException
      */
     public ArrayList<String> readFile(String path) throws FileNotFoundException {

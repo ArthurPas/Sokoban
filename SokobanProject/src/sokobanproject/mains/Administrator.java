@@ -3,8 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package sokobanproject;
+package sokobanproject.mains;
 
+import sokobanproject.databaseAndFiles.Database;
+import sokobanproject.databaseAndFiles.Builder;
+import sokobanproject.playermanager.KeyboardEntry;
 import java.io.FileNotFoundException;
 import java.sql.SQLException;
 

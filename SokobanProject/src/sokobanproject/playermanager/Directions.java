@@ -1,4 +1,4 @@
-package sokobanproject;
+package sokobanproject.playermanager;
 
 /**
  *

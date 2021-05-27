@@ -1,5 +1,6 @@
-package sokobanproject;
+package sokobanproject.boards;
 
+import sokobanproject.boards.Board;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -10,9 +11,9 @@ import java.util.List;
  */
 public class Position {
 
-    final int col;
-    final int row;
-    Type type = Type.EMPTY;
+    public final int col;
+    public final int row;
+    public Type type = Type.EMPTY;
 
     /**
      * Construcotr of a position
@@ -75,5 +76,4 @@ public class Position {
         Position Compare = (Position) otherPos;
         return this.col == Compare.col && this.row == Compare.row;
     }
-
 }

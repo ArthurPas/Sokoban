@@ -5,6 +5,7 @@
  */
 package sokobanproject;
 
+import sokobanproject.playermanager.KeyboardEntry;
 import static junit.framework.Assert.assertFalse;
 import static junit.framework.Assert.assertTrue;
 import org.junit.Test;

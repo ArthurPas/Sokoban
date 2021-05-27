@@ -1,5 +1,11 @@
-package sokobanproject;
+package sokobanproject.mains;
 
+import sokobanproject.databaseAndFiles.Database;
+import sokobanproject.databaseAndFiles.Builder;
+import sokobanproject.playermanager.KeyboardEntry;
+import sokobanproject.boards.Type;
+import sokobanproject.boards.Position;
+import sokobanproject.boards.Board;
 import java.io.FileNotFoundException;
 import java.sql.SQLException;
 

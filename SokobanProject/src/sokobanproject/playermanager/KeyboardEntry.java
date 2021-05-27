@@ -1,5 +1,6 @@
-package sokobanproject;
+package sokobanproject.playermanager;
 
+import sokobanproject.playermanager.Directions;
 import java.util.Scanner;
 
 /**

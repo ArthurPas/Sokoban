@@ -1,4 +1,4 @@
-package sokobanproject;
+package sokobanproject.boards;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -7,11 +7,11 @@ import java.util.List;
  * @author apascal002
  */
 public class Board {
-    String boardName;
+    public String boardName;
     int nbCol;
     int nbRow;
     public Position[][] listPositions;
-    HashMap<Position, Type> saved;
+    public HashMap<Position, Type> saved;
     /**
      * Construtor of the Board
      * @param boardName the name of the board
