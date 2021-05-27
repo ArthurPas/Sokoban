@@ -37,6 +37,11 @@ public class Builder implements BoardBuilder {
         return row;
     }
 
+    /**
+     * Convert a char to a type of position 
+     * @param c the char
+     * @return the type of the given char
+     */
     public Type convertion(char c) {
         Type theType;
         switch (c) {
@@ -63,10 +68,9 @@ public class Builder implements BoardBuilder {
     }
 
     /**
-     *
-     * @param path
-     * @param stringRow
-     * @return
+     * Build a board from an arrayList of string
+     * @param stringRow the arrayList of string
+     * @return the board
      * @throws FileNotFoundException
      */
     @Override

@@ -13,35 +13,43 @@ public class Player {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws FileNotFoundException, SQLException {
-        
+
         Builder build = new Builder();
         Database base = new Database("jdbc:sqlite:boards.db");
-        Board b = base.get(build, "jdbc:sqlite:boards.db", "Plateau 2");
         base.initializeDriverAndDb();
-        //base.addBoard(build, "Board1.txt", "jdbc:sqlite:boards.db");
-        //base.deleteBoardFromDB(build, "jdbc:sqlite:boards.db", "Plateau");
-        //base.addBoard(build, "board1", "Board1.txt", "jdbc:sqlite:boards.db");
-        
-        base.consultDb(build, "jdbc:sqlite:boards.db");
-        //Board b = new Board("a", 5, 6);
-        /*
-        b.addHorizontalWall(0, 5, 6);
-        b.addHorizontalWall(0, 0, 6);
-        b.addVerticalWall(0, 0, 5);
-        b.addVerticalWall(4, 0, 5);
-        b.addBox(2, 1);
-        b.addBox(2, 3);
-        b.addTarget(3, 1);
-        b.addTarget(3, 2);
-        b.setPosition(3, 4);
-        */
-        b.savedInitialType();
-        System.out.println(b.boardName);
-        System.out.println(b.displayBoard());
-        String s = "LULURLUR";
-        movePlayer(s, b);
-        System.out.println(b.checkWin());
-        
+        System.out.println("Welcome in Sokoban !");
+        System.out.println("Please select\n"
+                + "1. Consult all the boards available\n"
+                + "2. choose your board\n"
+                + "3. quit\n");
+        String choice = KeyboardEntry.readLine();
+        switch (choice) {
+            case "1":
+                base.consultAllBoards("jdbc:sqlite:boards.db");
+                main(args);
+                break;
+            case "2":
+                System.out.println("Enter the name of the board");
+                String boardChoice = KeyboardEntry.readLine();
+                Board b = base.get(build, "jdbc:sqlite:boards.db", boardChoice);
+                b.savedInitialType();
+                System.out.println(b.boardName);
+                System.out.println(b.displayBoard());
+                System.out.println("Enter the combination of : \"LRUD\" that you think you will win with");
+                String combination = KeyboardEntry.readLine();
+                movePlayer(combination, b);
+                if(b.checkWin()){
+                    System.out.println("Well played ! it was the good combination");
+                }
+                else{
+                    System.out.println("Try again!");
+                }
+                break;
+            case "3":
+                System.exit(0);
+                break;
+        }
+
     }
 
     /**
@@ -102,5 +110,5 @@ public class Player {
             System.out.println(b.displayBoard());
         }
     }
-    
+
 }

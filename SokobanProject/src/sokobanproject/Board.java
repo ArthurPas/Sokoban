@@ -40,7 +40,7 @@ public class Board {
         }
         return null;
     }
-        /**
+    /**
      * Get the Position of the box
      * @return the Position of the player
      */
@@ -55,6 +55,10 @@ public class Board {
         }
         return BoxesPos;
     }
+    /**
+     * Get the Position of the target
+     * @return the Position of the targets
+     */
     public ArrayList<Position> getTargetsPos(){
         ArrayList<Position> BoxesPos= new ArrayList<>();
         for (int col = 0; col < this.nbCol; col++) {
@@ -210,6 +214,10 @@ public class Board {
         }
         return builder.toString();
     }
+    /**
+     * check if the player wins the game
+     * @return true if all the box are on the targets
+     */
     public boolean checkWin(){
         boolean bool = true;
         ArrayList<Position> boxesPos= getBoxPos();

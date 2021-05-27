@@ -54,16 +54,26 @@ public class Database {
             System.err.println("* Exception " + e.getMessage());
         }
     }
+
+    /**
+     * Add a board from a file
+     * @param build the builder
+     * @param pathOfFile the path of the file
+     * @param pathOfDB the path of the database
+     * @throws FileNotFoundException
+     * @throws SQLException
+     */
     public void addBoard(Builder build,String pathOfFile, String pathOfDB) throws FileNotFoundException, SQLException{
         ArrayList<String> lines = build.readFile(pathOfFile);
         String boardID = lines.get(0);
         int nbOfLines = 1;
         try (Connection c = DriverManager.getConnection(pathOfDB)) {
         PreparedStatement ps = c.prepareStatement("insert into ROWS values (?, ?, ?)");
-        for (int lineNumber = 1; lineNumber < lines.size(); lineNumber++) {
+        for (int lineNumber = 0; lineNumber < lines.size(); lineNumber++) {
             ps.setString(1, boardID);
             ps.setInt(2, lineNumber);
             ps.setString(3, lines.get(lineNumber));
+            ps.executeUpdate();
             nbOfLines++;
         }
         //s.executeUpdate("insert into BOARDS values ('"+boardID+"','"+boardID+"',"+nbOfLines+","+lines.get(1).length()+"')");
@@ -77,6 +87,13 @@ public class Database {
             System.err.println("* Exception " + e.getMessage());
         }
     }
+
+    /**
+     * Consult the database and all its content
+     * @param build the builder
+     * @param pathOfDB te path of the database
+     * @throws SQLException
+     */
     public void consultDb(Builder build, String pathOfDB) throws SQLException{
         try (Connection c = DriverManager.getConnection(pathOfDB)) {
         Statement s = c.createStatement(); 
@@ -96,6 +113,14 @@ public class Database {
         }
         
     }
+
+    /**
+     * Remove a board from the database 
+     * @param build the builder 
+     * @param pathOfDB the path of the database
+     * @param boardID the board's name you want to remove
+     * @throws SQLException
+     */
     public void removeBoardFromDB(Builder build, String pathOfDB, String boardID) throws SQLException{
         try (Connection c = DriverManager.getConnection(pathOfDB)) {
             PreparedStatement ps = c.prepareStatement("DELETE FROM ROWS WHERE board_id = ?");
@@ -109,10 +134,20 @@ public class Database {
             System.err.println("* Exception " + e.getMessage());
         }
     }
+
+    /**
+     * Get a board by a name given
+     * @param build the builder 
+     * @param pathOfDB the path of the database
+     * @param boardID the board's name 
+     * @return the board you asked
+     * @throws SQLException
+     * @throws FileNotFoundException
+     */
     public Board get(Builder build, String pathOfDB, String boardID) throws SQLException, FileNotFoundException{
         ArrayList<String> lines = new ArrayList<>();
         try (Connection c = DriverManager.getConnection(pathOfDB)) {
-            PreparedStatement ps = c.prepareStatement("select description from rows WHERE board_id = ?");;
+            PreparedStatement ps = c.prepareStatement("select description from rows WHERE board_id = ?");
             ps.setString(1,boardID);
             ResultSet r = ps.executeQuery(); 
             while (r.next()) {
@@ -121,6 +156,11 @@ public class Database {
         }
         return build.build(lines);
     }
+
+    /**
+     * Consult all the board from the database
+     * @param pathOfDB
+     */
     public void consultAllBoards(String pathOfDB){
         try (Connection c = DriverManager.getConnection(pathOfDB)) {
         Statement s = c.createStatement(); 
@@ -133,13 +173,4 @@ public class Database {
             System.err.println("* Exception " + e.getMessage());
         }
     }
-    /*public void clearTable(String pathOfDB, String table){
-      try (Connection c = DriverManager.getConnection(pathOfDB)) {
-            Statement s = c.createStatement();
-            s.executeUpdate("DELETE FROM rows");
-        }
-        catch (SQLException e) {
-            System.err.println("* Exception " + e.getMessage());
-        }
-    }*/
 }
