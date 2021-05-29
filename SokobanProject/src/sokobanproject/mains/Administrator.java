@@ -49,7 +49,7 @@ public class Administrator {
                 db.addBoard(build, pathOfFile, "jdbc:sqlite:boards.db");
                 break;
             case "5":
-                System.out.println("Please select a name for the new database");
+                System.out.println("Please select the name of the board to delete");
                 String boardName = KeyboardEntry.readLine();
                 db.removeBoardFromDB(build,("jdbc:sqlite:boards.db"),boardName);
                 break;
